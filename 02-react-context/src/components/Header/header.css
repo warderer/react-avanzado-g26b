@@ -1,0 +1,50 @@
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 60px;
+    background-color: #282c34;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.header__now-playing {
+    font-size: .6rem;
+
+}
+
+.header__song-detail {
+    font-size: 1rem;
+}
+
+.header__now-playing-container {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    justify-content: flex-start;
+}
+
+.header__input-search {
+    width: 40%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 0 10px;
+    font-size: 1rem;
+}
+
+.header__button {
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #ccc;
+    color: #282c34;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right:10px
+}
