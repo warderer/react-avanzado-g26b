@@ -1,14 +1,28 @@
+$menu-color: #3d3d3d;
+$header-background: #cdcdcd;
+
+@mixin header-link($hover: true) {
+    color: $menu-color;
+    text-decoration: none;
+    letter-spacing: 2px;
+
+    @if $hover {
+        &:hover {
+            color: #000;
+            border-bottom: solid 2px $menu-color;
+        }
+    }
+}
+
 .header {
-    background-color: #cdcdcd;
+    background-color: $header-background;
     display: flex;
     justify-content:space-between;
     align-items: center;
     padding: 15px 30px;
 
     &__logo {
-        color: #3d3d3d;
-        text-decoration: none;
-        letter-spacing: 2px;
+        @include header-link(false);
     }
 
     &__nav-list{
@@ -19,13 +33,11 @@
     }
 
     &__item-link {
-        color: #3d3d3d;
-        text-decoration: none;
-        letter-spacing: 2px;
+        @include header-link;
 
-        &:hover {
+        &--is-active {
             color: #000;
-            border-bottom: solid 2px #3d3d3d;
+            border-bottom: solid 2px $menu-color;
         }
     }
 }
