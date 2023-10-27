@@ -1,16 +1,15 @@
+import { BrowserRouter } from 'react-router-dom'
+import Header from '@/components/Header'
+import RoutesIndex from '@/routes/RoutesIndex'
 import './App.css'
-import Header from './components/Header'
-import { Dashboard, Home, Login, Secret, Signup } from '@/pages'
 
 function App () {
   return (
     <>
-      <Header />
-      <Home />
-      <Dashboard />
-      <Secret />
-      <Login />
-      <Signup />
+      <BrowserRouter>
+        <Header />
+        <RoutesIndex />
+      </BrowserRouter>
     </>
   )
 }
