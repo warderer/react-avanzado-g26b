@@ -2,10 +2,12 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import logo from '@/assets/react.svg'
 import { loginUserService } from '@/services/userServices'
+import { useAuthContext } from '@/hooks/useAuthContext'
 import '@/styles/form.css'
 
 const Login = () => {
   const navigate = useNavigate()
+  const { login } = useAuthContext()
 
   const {
     register,
@@ -18,8 +20,7 @@ const Login = () => {
       const response = await loginUserService(data)
       if (response.status === 200) {
         // console.log('Usuario ha iniciado sesión exitosamente', response.data.token)
-        // setItem guarda el token en el localStorage
-        localStorage.setItem('token', response.data.token)
+        login(response.data.token)
         navigate('/')
       }
     } catch (error) {
