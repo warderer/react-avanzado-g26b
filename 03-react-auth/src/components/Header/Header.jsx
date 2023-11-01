@@ -1,7 +1,10 @@
 import { NavLink } from 'react-router-dom'
+import { useAuthContext } from '@/hooks/useAuthContext'
 import './header.scss'
 
 const Header = () => {
+  const { isAuth, logout } = useAuthContext()
+
   const linkIsActive = (isActive) => {
     return isActive ? 'header__item-link header__item-link--is-active' : 'header__item-link'
   }
@@ -10,6 +13,7 @@ const Header = () => {
     <nav className='header'>
       <NavLink className='header__logo' to='/'>LOGO</NavLink>
       <ul className='header__nav-list'>
+
         <li className='header__list-item'>
           <NavLink
             to='/'
@@ -17,6 +21,7 @@ const Header = () => {
           >Home
           </NavLink>
         </li>
+
         <li className='header__list-item'>
           <NavLink
             to='/dashboard'
@@ -24,27 +29,48 @@ const Header = () => {
           >Dashboard
           </NavLink>
         </li>
-        <li className='header__list-item'>
-          <NavLink
-            to='/secret'
-            className={({ isActive }) => linkIsActive(isActive)}
-          >Secret
-          </NavLink>
-        </li>
-        <li className='header__list-item'>
-          <NavLink
-            to='/login'
-            className={({ isActive }) => linkIsActive(isActive)}
-          >Login
-          </NavLink>
-        </li>
-        <li className='header__list-item'>
-          <NavLink
-            to='/signup'
-            className={({ isActive }) => linkIsActive(isActive)}
-          >Signup
-          </NavLink>
-        </li>
+
+        {isAuth
+          ? (
+            <>
+              <li className='header__list-item'>
+                <NavLink
+                  to='/secret'
+                  className={({ isActive }) => linkIsActive(isActive)}
+                >Secret
+                </NavLink>
+              </li>
+
+              <li className='header__list-item'>
+                <NavLink
+                  to='/'
+                  className='header__item-link'
+                  onClick={logout}
+                >Logout
+                </NavLink>
+              </li>
+            </>
+            )
+          : (
+            <>
+              <li className='header__list-item'>
+                <NavLink
+                  to='/login'
+                  className={({ isActive }) => linkIsActive(isActive)}
+                >Login
+                </NavLink>
+              </li>
+
+              <li className='header__list-item'>
+                <NavLink
+                  to='/signup'
+                  className={({ isActive }) => linkIsActive(isActive)}
+                >Signup
+                </NavLink>
+              </li>
+            </>
+            )}
+
       </ul>
     </nav>
   )
