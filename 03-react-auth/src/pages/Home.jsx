@@ -6,7 +6,7 @@ const Home = () => {
   const [itemsData, setItemsData] = useState([])
 
   useEffect(() => {
-    const getUserData = async () => {
+    const getItemsData = async () => {
       try {
         const response = await getAllItemsServices()
         if (response.status === 200) {
@@ -16,7 +16,7 @@ const Home = () => {
         console.log('Ocurrio un error en Home', error.message)
       }
     }
-    getUserData()
+    getItemsData()
   }, [])
 
   return (
