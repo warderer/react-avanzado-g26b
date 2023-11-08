@@ -24,4 +24,22 @@ describe('Funcionalidad de Login', () => {
     // 03. Assert
     cy.get('h1').contains('Home')
   })
+
+  it('Cuando haga Logout como ADMIN me lleve a la página de Home', () => {
+    // Interceptor lo uso para saber cuando una llamada a API esta resulta y puedo esperarla en otro momento usando cy.wait()
+    cy.intercept('POST', 'https://ecommerce-json-jwt.onrender.com/login').as('login')
+
+    // 01. Arrange
+    cy.visit('/login')
+
+    // 02. Act
+    cy.get('input[name="email"]').type('superman@dc.com')
+    cy.get('input[name="password"]').type('superman')
+    cy.get('button[type="submit"]').click()
+    cy.wait('@login')
+
+    cy.get('nav > ul li:last').click()
+    // 03. Assert
+    cy.get('h1').contains('Home')
+  })
 })
