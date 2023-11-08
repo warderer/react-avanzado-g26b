@@ -16,9 +16,7 @@ describe('Funcionalidad de Login', () => {
     cy.visit('/login')
 
     // 02. Act
-    cy.get('input[name="email"]').type('drstrange@marvel.com')
-    cy.get('input[name="password"]').type('multiverso')
-    cy.get('button[type="submit"]').click()
+    cy.doLogin('drstrange@marvel.com', 'multiverso')
 
     cy.wait('@login')
     // 03. Assert
@@ -33,9 +31,7 @@ describe('Funcionalidad de Login', () => {
     cy.visit('/login')
 
     // 02. Act
-    cy.get('input[name="email"]').type('superman@dc.com')
-    cy.get('input[name="password"]').type('superman')
-    cy.get('button[type="submit"]').click()
+    cy.doLogin('superman@dc.com', 'superman')
     cy.wait('@login')
 
     cy.get('nav > ul li:last').click()
