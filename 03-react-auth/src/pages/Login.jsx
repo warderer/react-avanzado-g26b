@@ -45,6 +45,7 @@ const Login = () => {
             className='form-control'
             id='floatingInput'
             placeholder='name@example.com'
+            name='email'
             {...register('email', { required: true })}
           />
           <label htmlFor='floatingInput'>Email address</label>
@@ -57,6 +58,7 @@ const Login = () => {
             className='form-control'
             id='floatingPassword'
             placeholder='Password'
+            name='password'
             {...register('password', { required: true })}
           />
           <label htmlFor='floatingPassword'>Password</label>
